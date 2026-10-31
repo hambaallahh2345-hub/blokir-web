@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+
+    <meta name="description" content="Pemberitahuan kebijakan jaringan. Akses dibatasi demi menjaga produktivitas, etika, dan keamanan digital.">
+
+    <title>Akses Dibatasi | Network Policy</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: #0f172a;
+            --card: #111c30;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --emerald: #10b981;
+            --emerald-soft: rgba(16, 185, 129, 0.12);
+            --amber: #fbbf24;
+            --amber-soft: rgba(251, 191, 36, 0.12);
+            --border: rgba(148, 163, 184, 0.13);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px 18px;
+            overflow-x: hidden;
+
+            background-image:
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(16, 185, 129, 0.08),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 85% 85%,
+                    rgba(251, 191, 36, 0.04),
+                    transparent 35%
+                );
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 100%;
+            max-width: 620px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* BRAND */
+        .brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .brand-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+            color: var(--emerald);
+            background: var(--emerald-soft);
+            font-size: 20px;
+        }
+
+        .brand-name {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #cbd5e1;
+        }
+
+        /* MAIN CARD */
+        .main-card {
+            background: linear-gradient(
+                145deg,
+                rgba(23, 36, 58, 0.98),
+                rgba(17, 28, 48, 0.98)
+            );
+
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 42px 38px;
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        /* WARNING ICON */
+        .warning-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .warning-icon {
+            width: 76px;
+            height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 22px;
+            background: var(--amber-soft);
+
+            border: 1px solid rgba(251, 191, 36, 0.18);
+            color: var(--amber);
+            font-size: 36px;
+        }
+
+        /* HEADING */
+        .heading {
+            text-align: center;
+        }
+
+        .heading h1 {
+            font-size: clamp(24px, 5vw, 32px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .heading h1 span {
+            color: var(--amber);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 7px 13px;
+            border-radius: 30px;
+
+            background: rgba(239, 68, 68, 0.10);
+            border: 1px solid rgba(239, 68, 68, 0.20);
+
+            color: #fca5a5;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #ef4444;
+
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+        }
+
+        /* MAIN MESSAGE */
+        .message {
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 30px;
+        }
+
+        .message p {
+            font-size: 14px;
+            line-height: 1.9;
+            color: var(--text-secondary);
+        }
+
+        .message strong {
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        /* QURAN QUOTE */
+        .quran-box {
+            background: rgba(16, 185, 129, 0.055);
+            border: 1px solid rgba(16, 185, 129, 0.20);
+            border-radius: 18px;
+            padding: 26px 24px;
+            margin-bottom: 27px;
+        }
+
+        .quran-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            color: var(--emerald);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .arabic {
+            font-family: 'Amiri', serif;
+            font-size: 27px;
+            line-height: 2;
+            text-align: center;
+            direction: rtl;
+            color: #d1fae5;
+            margin-bottom: 18px;
+        }
+
+        .translation {
+            font-size: 13px;
+            line-height: 1.9;
+            text-align: center;
+            color: #cbd5e1;
+            font-style: italic;
+        }
+
+        .reference {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+
+            color: var(--emerald);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* POLICY INFORMATION */
+        .policy {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+
+            padding: 16px;
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .policy-icon {
+            font-size: 19px;
+            color: var(--emerald);
+            margin-top: 2px;
+        }
+
+        .policy-content h3 {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #e2e8f0;
+        }
+
+        .policy-content p {
+            font-size: 12px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .footer p {
+            font-size: 11px;
+            line-height: 1.8;
+            color: #64748b;
+        }
+
+        .footer strong {
+            color: #94a3b8;
+        }
+
+        .footer-line {
+            width: 45px;
+            height: 2px;
+            background: var(--emerald);
+            border-radius: 5px;
+            margin: 0 auto 17px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            body {
+                padding: 25px 14px;
+            }
+
+            .main-card {
+                padding: 32px 20px;
+                border-radius: 20px;
+            }
+
+            .warning-icon {
+                width: 66px;
+                height: 66px;
+                font-size: 30px;
+            }
+
+            .heading h1 {
+                font-size: 25px;
+            }
+
+            .message p {
+                font-size: 13px;
+            }
+
+            .quran-box {
+                padding: 23px 16px;
+            }
+
+            .arabic {
+                font-size: 24px;
+            }
+
+            .translation {
+                font-size: 12px;
+            }
+
+            .policy {
+                padding: 14px;
+            }
+        }
+
+        /* REDUCED MOTION */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- BRAND -->
+        <div class="brand">
+            <div class="brand-icon">◈</div>
+            <div class="brand-name">HOME NETWORK</div>
+        </div>
+
+        <!-- MAIN CARD -->
+        <section class="main-card">
+
+            <!-- WARNING ICON -->
+            <div class="warning-wrapper">
+                <div class="warning-icon">⚠</div>
+            </div>
+
+            <!-- HEADING -->
+            <div class="heading">
+                <h1>
+                    AKSES <span>DIBATASI</span>
+                </h1>
+
+                <div class="status">
+                    <span class="status-dot"></span>
+                    ACCESS RESTRICTED
+                </div>
+            </div>
+
+            <!-- MAIN MESSAGE -->
+            <div class="message">
+                <p>
+                    Maaf, akses menuju situs atau halaman yang Anda
+                    coba kunjungi telah
+                    <strong>dibatasi oleh kebijakan jaringan.</strong>
+
+                    <br><br>
+
+                    Pembatasan ini diterapkan sebagai upaya menjaga
+                    <strong>produktivitas, etika, dan keamanan</strong>
+                    lingkungan digital keluarga.
+                </p>
+            </div>
+
+            <!-- QURAN QUOTE -->
+            <blockquote class="quran-box">
+
+                <div class="quran-label">
+                    ✦ PENGINGAT AL-QUR'AN ✦
+                </div>
+
+                <div class="arabic">
+                    يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ
+                    وَلْتَنظُرْ نَفْسٌ مَّا قَدَّمَتْ لِغَدٍ
+                    وَاتَّقُوا اللَّهَ ۚ إِنَّ اللَّهَ خَبِيرٌ بِمَا تَعْمَلُونَ
+                </div>
+
+                <p class="translation">
+                    "Wahai orang-orang yang beriman! Bertakwalah
+                    kepada Allah dan hendaklah setiap orang
+                    memperhatikan apa yang telah diperbuatnya
+                    untuk hari esok (akhirat). Bertakwalah kepada
+                    Allah. Sungguh, Allah Mahateliti terhadap
+                    apa yang kamu kerjakan."
+                </p>
+
+                <span class="reference">
+                    QS. AL-HASYR : 18
+                </span>
+
+            </blockquote>
+
+            <!-- POLICY INFORMATION -->
+            <div class="policy">
+
+                <div class="policy-icon">◈</div>
+
+                <div class="policy-content">
+
+                    <h3>KEBIJAKAN JARINGAN</h3>
+
+                    <p>
+                        Gunakan akses internet secara bijak,
+                        bertanggung jawab, dan sesuai dengan
+                        norma serta nilai-nilai kebaikan.
+
+                        Pembatasan ini bertujuan menciptakan
+                        lingkungan digital yang lebih sehat
+                        dan bermanfaat bagi seluruh pengguna.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <div class="footer-line"></div>
+
+            <p>
+                <strong>HOME NETWORK</strong>
+
+                <br>
+
+                Internet Sehat, Keluarga Lebih Bijak.
+
+                <br><br>
+
+                © 2026 Network Policy System
+            </p>
+
+        </footer>
+
+    </main>
+
+</body>
+</html>
